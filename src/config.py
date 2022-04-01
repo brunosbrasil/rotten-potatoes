@@ -50,4 +50,4 @@ def on_starting(server):
                     
                     collection.insert_one(filme)
                     
-            arquivo.close() 
+            arquivo.close()
