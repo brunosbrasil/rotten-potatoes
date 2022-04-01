@@ -11,7 +11,7 @@ on:
 
 
 jobs:
-  build:
+  CI:
     runs-on: ubuntu-latest
     
     steps:
@@ -33,3 +33,16 @@ jobs:
             brunosbrasil/rotten-potatoes:latest
             brunosbrasil/rotten-potatoes:${{ github.run_number }}
       
+  CD:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Kubernetes Set Context
+        uses: Azure/k8s-set-context@v2
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secretes.K8S_KUBECONFIG }}
+      
+
